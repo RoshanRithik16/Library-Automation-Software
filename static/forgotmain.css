@@ -1,0 +1,128 @@
+body {
+  font-family: poppins;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.container {
+  width: 300px;
+  padding: 20px;
+  height: 430px;
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  margin-top: 5px;
+  
+}
+
+.textbox {
+  font-family: Poppins;
+  font-weight: bold;
+  font-size: 14px;
+  width: 250px;
+  height: 30px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 0.5px solid #ccc;
+  border-radius: 15px;
+}
+
+.login-button {
+  height: 50px;
+  width: 250px;
+  padding: 10px;
+  background-color: #085695;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: Poppins;
+  font-weight: bold;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+  
+}
+
+.Attendance-Head{
+  font-family: Poppins;
+  font-weight: SemiBold;
+  font-size: 20px;
+  text-align: left;
+  padding-left: 15.5px;
+}
+.popup-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+.popup {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  font-family: Poppins;
+  background-color: #fff;
+  color: #085695;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 30px;
+  display: none;
+  z-index: 999;
+  animation: fadeIn 1s, fadeOut 2s 2s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+.popup.show{
+  display: block;
+}
+.Librarytitle{
+  font-size: 18px;
+  font-family: Poppins;
+  color: #085695;
+}
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 0; 
+  margin-top: 45px;
+}
+
+.logo-container img {
+  max-width: 100%; /* adjust the width according to your needs */
+  height: auto;
+  margin: 0 auto; /* center the image horizontally */
+}

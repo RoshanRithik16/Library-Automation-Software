@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../static/finemanager.css">
+	
+</head>
+<body >
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar" style="font-family: var(--poppins); ">
+		<img src="../static/ritlogo.png" height="80px" width="190px" class="Logoimg" >
+		<ul class="side-menu top">
+			<li >
+				<a href="/librarianDashboard">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li >
+				<a href="/inventory">
+					<i class='bx bxs-package' ></i>
+					<span class="text">Inventory</span>
+				</a>
+			</li>
+			<li>
+				<a href="/student">
+					<i class='bx bxs-user type="sloid"' ></i>
+					<span class="text">Add Members</span>
+				</a>
+			</li>
+			
+			
+			<li>
+				<a href="/noduechecker">
+					<i class='bx bxs-user-check'></i>
+					<span class="text">No Due Checker</span>
+				</a>
+			</li>
+			<li>
+				<a href="/bookacquisition">
+					<i class='bx bxs-book type="sloid" ' ></i>
+					<span class="text">Book Acquisition</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="/finemanager">
+					<i class='bx bx-money'></i>
+					<span class="text">Fine Manager</span>
+				</a>
+			</li>
+			<li>
+				<a href="/report">
+					<i class='bx bxs-report type="sloid"' ></i>
+					<span class="text">Report</span>
+				</a>
+			</li>
+			<li>
+				<a href="/booksearch">
+					<i class='bx bx-search-alt-2'></i>
+					<span class="text">Search</span>
+				</a>
+			</li>
+		</ul>
+		
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content" >
+		<!-- NAVBAR -->
+		<nav>
+
+			<h1 style="color:rgb(6, 126, 212);font-size:22px; font-weight:bold; font-family:poppins;padding-top: 10px;">Library Management System</h1>			<div class="right-corner">
+		    	<img src="../static/user.jpg" class="user-pic"  onclick="toggleMenu()">
+				<div class="sub-menu-wrap" id="subMenu">
+					<div class="sub-menu">
+					<a href="/reset_password" class="sub-menu-link">
+                        <p>Change Password</p>
+					</a>
+					<a href="/logout" class="sub-menu-link" style="color: crimson;">
+						<p>Logout</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					</div>
+				</div>
+			</div>
+		</main>
+		<div>
+			<div class="Inventory_and_Resurces"  style="font-weight:normal;">
+				<div style="padding-left:1%;">
+					<h1 style = "font-weight:normal;font-size: 30px;color:#463D3F;padding-top: 20px;padding-bottom: 10px;">Fine Manager</h1>
+				</dv>
+				<div class="resources_container">
+					<div class="book_journals_thesis_container">
+						<div class="Resources_bookimge_head">
+							<div class="Book_container">
+								<div class="book_head_container">
+									<div>
+										<h1 class="book_head" style="color:red;">{{ total_fines }}</h1>
+									</div>
+									<div>
+										<p style="font-size: 18px;">Total Fines Unpaid</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="Resources_bookimge_head">
+							<div class="Book_container">
+								<div class="book_head_container">
+									<div>
+										<h1 class="book_head" style="color: #463D3F;">{{ total_amount }}</h1>
+									</div>
+									<div>
+										<p style="font-size: 18px;">Total Amount to be collected</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="Resources_bookimge_head">
+							<div class="Book_container">
+								<div class="book_head_container">
+									<div>
+										<h1 class="book_head"  style="color:#4adb7f;">{{ collected}}</h1>
+									</div>
+									<div>
+										<p style="font-size: 18px;" >Total Amount collected</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<div>
+			<div class="clearfine_container">
+				<h1 style = "font-weight:normal;font-size: 30px;color:#463D3F;padding-top: 10px;padding-bottom: 10px;">User Details</h1>
+				<div class="accessnum_userdeails_container">
+					<div>
+						<div style="padding-top:2%;">
+							<div>
+								<label class="textplace" for="reg_no" style="font-size: 17px; "></label>
+							</div>
+							<form action="/fine_manager", method="post">
+							<div style="display: flex; flex-direction: row; ">
+								<input type="text" name="reg_no" id="reg_no" required class="access_num" placeholder="Register Number" style="    border: 1px solid grey";
+								">
+								<button type="Submit" class="AddBook_submit_button" style="width: 14%; margin-left: 60px;">Submit</button>
+							</div>
+								</form>
+						</div>
+					</div>
+
+				<div class="tabledata_container">
+					<table>
+						<colgroup>
+						<col style="width: 30%;">
+						<col style="width: 50%;">
+						<col style="width: 25%;">
+						<col style="width: 25%;">
+						<col style="width: 25%;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>Register No</th>
+								<th>Access No</th>
+								<th>Issue Date</th>
+								<th>Due Date</th>
+								<th>Fine</th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for i in data %}
+  					<tr>
+    				<td>{{ i.REGISTERNO }}</td>
+					<td>{{ i.ACC }}</td>
+					<td>{{ i['ISSUEDATE'] }}</td>
+					<td>{{ i['DUEDATE'] }}</td>
+					<td>{{ i.FINE }}</td>
+  				</tr>
+						{% endfor %}
+
+
+						</tbody>
+					</table>
+					</div>
+					<div class="align-left" >
+						<label ><p style="font-weight: 800;color: #463D3F;">Total Fine Amount : </p></label>
+						<label type="text" name="total_fine"  > {{ total | default('  ') }}</label>
+					</div>
+				</div>
+
+
+				</div>
+
+			</div>
+
+		</div>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	{% if success_message %}
+            <div class="popup d-flex justify-content-center">
+                <div class="success-message">{{ success_message }}</div>
+            </div>
+        {% endif %}
+	<script>
+		const popup = document.querySelector('.popup');
+        if (popup) {
+            popup.classList.add('show');
+            setTimeout(() => {
+                popup.classList.remove('show');
+            }, 3000);
+        }
+		let subMenu = document.getElementById("subMenu");
+		
+		function toggleMenu(){
+			subMenu.classList.toggle("open-menu");
+		}
+	</script>
+	
+
+	<script src="script.js"></script>
+</body>
+</html>

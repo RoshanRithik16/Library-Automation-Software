@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../static/bookacquisition.css">
+
+	
+</head>
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar" style="font-family: var(--poppins); ">
+		<img src="../static/ritlogo.png" class="Logoimg" >
+		<ul class="side-menu top">
+			<li >
+				<a href='/sublibrarianDashboard'>
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li >
+				<a href="/subinventory">
+					<i class='bx bxs-package' ></i>
+					<span class="text">Inventory</span>
+				</a>
+			</li>
+			<li >
+				<a href="/subnoduechecker">
+					<i class='bx bxs-user-check'></i>
+					<span class="text">No Due Checker</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="/subbookacquisition">
+					<i class='bx bxs-book type="sloid" ' ></i>
+					<span class="text">Book Acquisition</span>
+				</a>
+			</li>
+		
+			<li>
+				<a href="/subbooksearch">
+					<i class='bx bx-search-alt-2'></i>
+					<span class="text">Search</span>
+				</a>
+			</li>
+		</ul>
+
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<h1 style="color:rgb(6, 126, 212);font-size:22px; font-weight:bold; font-family:poppins;padding-top: 10px;">Library Management System</h1>			<div class="right-corner">
+		    	<img src="../static/user.jpg" class="user-pic"  onclick="toggleMenu()">
+				<div class="sub-menu-wrap" id="subMenu">
+					<div class="sub-menu">
+						<a href="/forgot_password" class="sub-menu-link">
+							<p>Change Password</p>
+						</a>
+						<a href="/logout" class="sub-menu-link" style="color: crimson;">
+							<p>Logout</p>
+						</a>
+					</div>
+				</div>
+			</div> <!-- Closing right-corner div -->
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main >
+			<div >
+				<div>
+					<h1 style = "font-weight:normal;font-size: 30px;color:#463D3F;padding-top: 30px;padding-bottom: 10px;">Book Acquisition</h1>
+				</div>
+				
+			</div>
+			<div class="Addbookform_container">
+				<form action="/sublog_book_acq" method="post" class="form">
+					<div class="form1form2_and_AddBook_SubmitButton_container">
+						<div class="form1_and_form2">
+							<div class="form1">
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="title" style="font-size: 17px;font-weight: 600; ">Title</label>
+									</div>
+									<div>
+										<input type="text" required name="title" id="title"  class="AddBook_Details"><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="author" style="font-size: 17px;font-weight: 600; ">Author</label>
+									</div>
+									<div>
+										<input type="text" required name="author" id="author" class="AddBook_Details"><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace"  for="year" style="font-size: 17px;font-weight: 600;">Year</label>
+									</div>
+									<div>
+										<input type="text" required name="year" id="year" inputmode="numeric" pattern="[0-9]*" class="AddBook_Details"><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="page_no" style="font-size: 17px;font-weight: 600; ">Page No</label>
+									</div>
+									<div>
+										<input type="text" required name="page_no" id="page_no" inputmode="numeric" pattern="[0-9]*" class="AddBook_Details"><br>
+									</div>	
+								</div>
+
+							</div>
+							<div class="form2">
+								<div style="padding: 3px;">
+									<div>
+										<label  class="textplace" for="call_no" style="font-size: 17px;font-weight: 600; ">Call No</label>
+									</div>
+									<div>
+										<input type="text" required name="call_no" id="call_no"  class="AddBook_Details"><br>
+									</div>	
+								</div>
+								
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="author_2" style="font-size: 17px;font-weight: 600; ">Author 2</label>
+									</div>
+									<div>
+										<input type="text" required name="author_2" id="author_2" class="AddBook_Details"><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="publisher" style="font-size: 17px;font-weight: 600;">Publisher</label>
+									</div>
+									<div>
+										<input type="text" required name="publisher" id="publisher"  class="AddBook_Details"><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="price" style="font-size: 17px;font-weight: 600; ">Price</label>
+									</div>
+									<div>
+										<input type="number" required name="price" inputmode="numeric" id="price"  class="AddBook_Details"><br>
+									</div>	
+								</div>
+								
+							</div>
+						</div>
+						<div class="AddBook_container">				
+							<button type="Submit"class="AddBook_submit_button">Request</button>
+						</div>
+						
+					</div>
+				</form>
+				
+			</div>
+			
+		
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->	
+	
+{% if success_message %}
+            <div class="popup d-flex justify-content-center">
+                <div class="success-message">{{ success_message }}</div>
+            </div>
+        {% endif %}
+	<script>
+		const popup = document.querySelector('.popup');
+        if (popup) {
+            popup.classList.add('show');
+            setTimeout(() => {
+                popup.classList.remove('show');
+            }, 3000);
+        }
+		let subMenu = document.getElementById("subMenu");
+		
+		function toggleMenu(){
+			subMenu.classList.toggle("open-menu");
+		}
+		
+	</script>
+	<script src="./scriptinventory.js"></script>
+</body>
+</html>

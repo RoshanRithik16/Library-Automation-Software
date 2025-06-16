@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--DropDownicon-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../static/Report.css">
+
+
+</head>
+<body>
+
+
+<!-- SIDEBAR -->
+	<section id="sidebar" style="font-family: var(--poppins); ">
+		<img src="../static/ritlogo.png" height="80px" width="190px" class="Logoimg" >
+		<ul class="side-menu top">
+			<li >
+				<a href="/librarianDashboard">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li >
+				<a href="/inventory">
+					<i class='bx bxs-package' ></i>
+					<span class="text">Inventory</span>
+				</a>
+			</li>
+			<li>
+				<a href="/student">
+					<i class='bx bxs-user type="sloid"' ></i>
+					<span class="text">Add Members</span>
+				</a>
+			</li>
+
+
+			<li>
+				<a href="/noduechecker">
+					<i class='bx bxs-user-check'></i>
+					<span class="text">No Due Checker</span>
+				</a>
+			</li>
+			<li>
+				<a href="/bookacquisition">
+					<i class='bx bxs-book type="sloid" ' ></i>
+					<span class="text">Book Acquisition</span>
+				</a>
+			</li>
+			<li>
+				<a href="/finemanager">
+					<i class='bx bx-money'></i>
+					<span class="text">Fine Manager</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="/report">
+					<i class='bx bxs-report type="sloid"' ></i>
+					<span class="text">Report</span>
+				</a>
+			</li>
+			<li>
+				<a href="/booksearch">
+					<i class='bx bx-search-alt-2'></i>
+					<span class="text">Search</span>
+				</a>
+			</li>
+		</ul>
+
+
+	</section>
+	<!--SIDEBAR-->
+
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+<!-- NAVBAR -->
+		<nav>
+
+			<h1 style="color:rgb(6, 126, 212);font-size:22px; font-weight:bold; font-family:poppins;padding-top: 10px;">Library Management System</h1>
+			<div class="right-corner">
+		    <img src="../static/user.jpg" class="user-pic"  onclick="toggleMenu()" >
+			<div class="sub-menu-wrap" id="subMenu">
+				<div class="sub-menu">
+					<a href="/forgot_password" class="sub-menu-link">
+                        <p>Change Password</p>
+					</a>
+					<a href="/logout" class="sub-menu-link" style="color: crimson;">
+						<p>Logout</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		</nav>
+<!--NAVBAR-->
+
+		<!-- MAIN -->
+		<main >
+			<div class="addbookhead_importbutton">
+				<div style="padding-left:20px;padding-top:20px;">
+					<h1 style = "font-weight:normal;font-size: 30px;color:#463D3F">Report Generator</h1>
+				</div>
+			</div>
+		</main>
+		
+		
+<!-- MAIN -->
+<!--Bookreservaions-->
+	</section>
+	<!--Bookreservaions-->
+	<section>
+		<div class="full_table_container">
+			<div class="table_container">
+				
+					<div class="dropdown-content">
+						
+						<form action="/report_gen" method="post">
+							<div class="inputlabel_button_and_date" style="padding-left: 20px;">
+									<div class="inputlabel_button">
+										<div class="selection_option">
+											<h1 style="font-weight: normal;font-size: 20px;padding-top: 20px;">Select Report</h1>
+										</div>
+										<label for="report"></label>
+										<select name="report" id="report" class="selector_option">
+										<option value="footfall">Footfall</option>
+										<option value="issue">Issue</option>
+										<option value="return">Return</option>
+										<option value="fine">Fine</option>
+										<option value="collect">Fine collected</option>
+										<option value="acquisition">Acquisition</option>
+										<option value="missing">Missing Books</option>
+										<option value="book">Book</option>
+										<option value="user">User</option>
+										<option value="cd">CD</option>
+										<option value="thesis">Thesis</option>
+										<option value="eresources">E-resources</option>
+										<option value="journal">Journal</option>
+										<option value="project">Project</option>
+
+										</select>
+										<div class="submit_button_container">
+											<input type="submit" class="import_book_button">
+										</div>
+									</div>
+									<div class="fromdate_todate_container">
+										<div style="display:flex;flex-direction:row;margin-top: -20px;">
+												<div style="padding-right:40px;">	
+													<label for="fromDate" style="font-weight:normal;font-size: 20px;">From Date</label>
+													<input type="date" id="fromDate" name="fromDate" size="40">
+												</div>
+											
+												<div>
+													<label for="toDate" style="font-weight:normal;font-size: 20px;">To Date</label>
+													<input type="date" id="toDate" name="toDate">
+												</div>
+										</div>
+									</div>
+							</div>
+							
+						  </form>
+						
+					
+				</div>
+				
+			</div>
+		</div>
+	</section>
+	
+{% if success_message %}
+	<div class="popup d-flex justify-content-center">
+		<div class="success-message">{{ success_message }}</div>
+	</div>
+{% endif %}
+<script>
+const popup = document.querySelector('.popup');
+if (popup) {
+	popup.classList.add('show');
+	setTimeout(() => {
+		popup.classList.remove('show');
+	}, 3000);
+}
+       		let subMenu = document.getElementById("subMenu");
+
+		function toggleMenu(){
+			subMenu.classList.toggle("open-menu");
+		}
+    </script>
+	<script src="static/Reportgenerator.js"></script>
+</body>
+</html>

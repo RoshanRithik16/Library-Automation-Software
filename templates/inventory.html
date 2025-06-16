@@ -1,0 +1,269 @@
+
+<!--Page for add members-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../static/inventory1.css">
+	
+</head>
+<body style="overflow: hidden;">
+
+
+<!-- SIDEBAR -->
+	<section id="sidebar" style="font-family: var(--poppins); ">
+		<img src="../static/ritlogo.png" class="Logoimg" >
+		<ul class="side-menu top">
+			<li >
+				<a href='/librarianDashboard'>
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="/inventory">
+					<i class='bx bxs-package' ></i>
+					<span class="text">Inventory</span>
+				</a>
+			</li>
+			<li>
+				<a href="/student">
+					<i class='bx bxs-user type="sloid"' ></i>
+					<span class="text">Add Members</span>
+				</a>
+			</li>
+
+
+			<li>
+				<a href="/noduechecker">
+					<i class='bx bxs-user-check'></i>
+					<span class="text">No Due Checker</span>
+				</a>
+			</li>
+			<li>
+				<a href="/bookacquisition">
+					<i class='bx bxs-book type="sloid" ' ></i>
+					<span class="text">Book Acquisition</span>
+				</a>
+			</li>
+			<li>
+				<a href="/finemanager">
+					<i class='bx bx-money'></i>
+					<span class="text">Fine Manager</span>
+				</a>
+			</li>
+			<li>
+				<a href="/report">
+					<i class='bx bxs-report type="sloid"' ></i>
+					<span class="text">Report</span>
+				</a>
+			</li>
+			<li>
+				<a href="/booksearch">
+					<i class='bx bx-search-alt-2'></i>
+					<span class="text">Search</span>
+				</a>
+			</li>
+		</ul>
+
+	</section>
+	<!--SIDEBAR-->
+
+
+
+
+	<!-- CONTENT -->
+	<section id="content" style="overflow:hidden">
+<!-- NAVBAR -->
+		<nav>
+
+			<h1 style="color:rgb(6, 126, 212);font-size:22px; font-weight:bold; font-family:poppins;padding-top: 10px;">Library Management System</h1>
+			<div class="right-corner">
+		    <img src="../static/user.jpg" class="user-pic"  onclick="toggleMenu()" >
+			<div class="sub-menu-wrap" id="subMenu">
+				<div class="sub-menu">
+					<a href="/forgot_password" class="sub-menu-link">
+                        <p>Change Password</p>
+					</a>
+					<a href="/logout" class="sub-menu-link" style="color: crimson;">
+						<p>Logout</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		</nav>
+<!--NAVBAR-->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					</div>
+				</div>
+			</div>
+		</main>
+		<div>
+			<div class="Inventory_and_Resurces">
+				<div style="padding-left:1%;">
+					<h1 style="font-weight: normal;padding-top: 10px;padding-left: 34px;font-size:35px;color:#342E37">Inventory</h1>
+
+				</div>
+				<div class="Additems_remove_missingbook_contanier">
+				
+					<div class="Additems_container" onclick="window.location.href='/abook'">
+						<div>
+							<h1 class="Additem_head" style="font-weight:300;font-size: 25px;">Add Items</h1>
+						</div>
+						<div>
+							<img src="../static/Add.png" class="Addpng">
+						</div>
+					</div>
+					<div class="Removeitems_container" onclick="window.location.href='/rbook'">
+						<div>
+							<h1 class="Additem_head" style="font-weight:300;font-size: 25px;" >Remove/Edit Items</h1>
+						</div>
+						<div>
+							<img src="../static/Minus.png" class="Addpng">
+						</div>
+					</div>
+					<div class="Missingbooks_container" onclick="window.location.href='/mbook'">
+						<div>
+							<h1 class="Additem_head" style="font-weight:300;font-size: 25px;">Missing Books</h1>
+						</div>
+						<img src="../static/missingbooks.png" class="Addpng">
+
+					</div>
+				</div>
+			<div>
+			<div class="resources_container">
+				<h1 style="font-weight: normal;padding-top: 10px;padding-left:40px;font-size:35px;color:#342E37">Resources</h1>
+				<div class="book_journals_thesis_container">
+					<div class="Resources_bookimge_head">
+						<div class="Book_container">
+							<div class="Book_image_container">
+								<div>
+									<img src="../static/Books.png" class="Bookpng">
+								</div>
+							</div>
+							<div class="book_head_container">
+								<div>
+									<h1 class="book_head_number	">{{totalbooks}}</h1>
+								</div>
+								<div>
+									<p>Books</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="Resources_bookimge_head">
+						<div class="Book_container">
+							<div class="journal_image_container">
+								<div>
+									<img src="../static/journal.png" class="Bookpng">
+								</div>
+							</div>
+							<div class="book_head_container">
+								<div>
+									<h1 class="book_head_number">205</h1>
+								</div>
+								<div>
+									<p>Journals</p>
+								</div>
+							</div> 
+						</div>
+					</div>
+					<div class="Resources_bookimge_head">
+						<div class="Thesis_container">
+							<div class="Thesis_image_container">
+								<div>
+									<img src="../static/Thesis.png" class="Bookpng">
+								</div>
+							</div>
+							<div class="book_head_container">
+								<div>
+									<h1 class="book_head_number">75</h1>
+								</div>
+								<div>
+									<p>Thesis</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="Cds_Projects_E_Resources_container">
+					<div class="Resources_bookimge_head">
+						<div class="Book_container">
+							<div class="CDS_image_container">
+								<div>
+									<img src="../static/CDS.png" class="Bookpng">
+								</div>
+							</div>
+							<div class="book_head_container">
+								<div>
+									<h1 class="book_head_number">1401</h1>
+								</div>
+								<div>
+									<p>CDs</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="Resources_bookimge_head">
+						<div class="Book_container">
+							<div class="Projects_image_container">
+								<div>
+									<img src="../static/Projects.png" class="Projects_png">
+								</div>
+							</div>
+							<div class="book_head_container">
+								<div>
+									<h1 class="book_head_number">1649</h1>
+								</div>
+								<div>
+									<p>Projects</p>
+								</div>
+							</div> 
+						</div>
+					</div>
+					<div class="Resources_bookimge_head">
+						<div class="Thesis_container">
+							<div class="E_Resources_image_container">
+								<div>
+									<img src="../static/E-Resources.png" class="E_Resources_png">
+								</div>
+							</div>
+							<div class="book_head_container">
+								<div>
+									<h1 class="book_head_number">1528</h1>
+								</div>
+								<div>
+									<p>E-Resources</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	<script>
+		let subMenu = document.getElementById("subMenu");
+		
+		function toggleMenu(){
+			subMenu.classList.toggle("open-menu");
+		}
+	</script>
+	
+
+	<script src="script.js"></script>
+</body>
+</html>

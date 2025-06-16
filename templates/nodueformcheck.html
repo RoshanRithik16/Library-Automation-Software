@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../static/nodueformcheck.css">
+	
+</head>
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar" style="font-family: var(--poppins); ">
+		<img src="../static/ritlogo.png" height="80px" width="190px" class="Logoimg" >
+		<ul class="side-menu top">
+			<li >
+				<a href="/librarianDashboard">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="/inventory">
+					<i class='bx bxs-package' ></i>
+					<span class="text">Inventory</span>
+				</a>
+			</li>
+			<li>
+				<a href="/student">
+					<i class='bx bxs-user type="sloid"' ></i>
+					<span class="text">Add Members</span>
+				</a>
+			</li>
+
+
+			<li class="active">
+				<a href="/noduechecker">
+					<i class='bx bxs-user-check'></i>
+					<span class="text">No Due Checker</span>
+				</a>
+			</li>
+			<li>
+				<a href="/bookacquisition">
+					<i class='bx bxs-book type="sloid" ' ></i>
+					<span class="text">Book Acquisition</span>
+				</a>
+			</li>
+			<li>
+				<a href="/finemanager">
+					<i class='bx bx-money'></i>
+					<span class="text">Fine Manager</span>
+				</a>
+			</li>
+			<li>
+				<a href="/report">
+					<i class='bx bxs-report type="sloid"' ></i>
+					<span class="text">Report</span>
+				</a>
+			</li>
+			<li>
+				<a href="/booksearch">
+					<i class='bx bx-search-alt-2'></i>
+					<span class="text">Search</span>
+				</a>
+			</li>
+		</ul>
+
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content" >
+		<!-- NAVBAR -->
+		<nav>
+			
+			<h1 style="color:rgb(6, 126, 212);font-size:22px; font-weight:bold; font-family:poppins;padding-top: 10px;">Library Management System</h1>			<div class="right-corner">
+		    	<img src="../static/user.jpg" class="user-pic"  onclick="toggleMenu()">
+				<div class="sub-menu-wrap" id="subMenu">
+					<div class="sub-menu">
+					<a href="/reset_password" class="sub-menu-link">
+                        <p>Change Password</p>
+					</a>
+					<a href="/logout" class="sub-menu-link" style="color: crimson;">	
+						<p>Logout</p>
+					</a>						
+				</div>
+			</div>	
+		</div>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					</div>
+				</div>
+			</div>
+		</main>
+		<div class="Inventory_and_Resources" style="font-weight: normal; font-family:poppins;">
+			<div style="padding-left: 4%;">
+				<h1 style = "font-weight:normal;font-size: 30px;color:#463D3F;padding-top: 30px;padding-bottom: 10px;">No Due Checker</h1>
+
+			</div>
+		<form action="/search_nodue" method="post" class="form">
+			<div class="clearfine_container">
+				<div class="accessnum_userdetails_container">
+					<div>
+						<div style="padding-top: 0%;">
+						
+							<div style="display: flex; flex-direction: row;">
+								<input type="text" name="reg_no" id="acc_no" required class="access_num" placeholder=" Register Number" value="{{ reg_no | default('') }}">
+								<button type="Submit" class="AddBook_submit_button" style="width: 14%; margin-left: 60px;">Submit</button>
+							</div>
+						</div>
+					</div>
+					{% if found %}
+					<div class="Addbookform_container">				
+						<h1 style = "font-weight:normal;font-size: 30px;color:#463D3F;padding-bottom: 20px;">User Details</h1>
+
+							<div class="form1form2_and_AddBook_SubmitButton_container">
+								<div class="form1_and_form2"> 
+									<div class="form1">
+										<div>
+											<div class="form-group">
+											   <label class="textplace" for="name" style="font-size: 18px; padding-right:90px;font-weight:600">Name</label>
+											   <label type="text" name="name" id="name" class="AddBook_Details">{{ found.NAME }}</label><br>
+										    </div>
+										</div>
+										<div>											
+											<div class="form-group">
+											   <label class="textplace" for="contact_no" style="font-size: 18px;padding-right:40px;font-weight:600">Contact No</label>
+										       <label type="text" name="contact_no" id="contact_no" class="AddBook_Details">{{found.PHONE}}</label><br>
+										    </div>
+										</div>
+										<div>
+											<div class="form-group">
+											   <label class="textplace" for="year" style="font-size: 18px;padding-right:100px;font-weight:600">Year</label>
+											   <label type="text" name="year" id="year" class="AddBook_Details">{{found.YEAR}}<br>
+										    </div>
+									    </div>
+
+										
+									</div>
+									<div class="form2">
+										<div>
+											<div class="form-group">
+											   <label class="textplace" for="department" style="font-size: 18px;padding-right:40px;font-weight:600">Department</label>
+											   <label type="text" name="department" id="department" class="AddBook_Details">{{found.DEPARTMENT}}</label><br>
+										    </div>
+									    </div>
+										<div >
+											<div class="form-group">
+											   <label class="textplace" for="designation" style="font-size: 18px;padding-right:40px;font-weight:600" >Designation</label>
+											   <label type="text" name="designation" id="designation" class="AddBook_Details">{{ found.DESIGNATION }}</label><br>
+										    </div>
+								     	</div>
+										<div>
+											<div class="form-group"></div>
+										       <label class="textplace" for="fine_amount" style="font-size: 18px;padding-right:36px;font-weight:600" >Fine Amount</label>
+									 	       <label  type="text" name="fine_amount" id="fine_amount" class="AddBook_Details">{{total}}</label><br>
+									       	</div>
+								     	</div>
+									</div>
+										</div>
+									</div>
+								</div>
+								<div class="table-data">									
+									<h1 style = "font-weight:normal;font-size: 30px;color:#463D3F;padding-bottom: 20px;padding-left:40px">Issued Book Details</h1>
+                                		<div class="order3" style="height: 300px; background-color:#EEEEEE; border-color: black;">
+										 
+										<div class="tabledata_container">
+										<table name="table" value="issuebook" style="overflow-y: scroll;" >
+											<colgroup>
+												<col style="width: 20%;">
+												<col style="width: 40%;">
+												<col style="width: 40%;">
+								            </colgroup>
+											<thead>
+												<tr class="active-row" style="margin-bottom:-70px;">
+													<th style="font-size: 18px;font-weight:600">Access Number</th>
+													<th style="font-size: 18px;font-weight:600">Issue Date</th>
+													<th style="font-size: 18px;font-weight:600">Due Date</th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for data in issued_details %}
+												<tr>
+													<td>{{ data['ACC'] }}</td>
+													<td>{{ data['ISSUEDATE'] }}</td>
+													<td>{{ data['DUEDATE'] }}</td>
+												</tr>
+												{% endfor %}
+											</tbody>
+										</table>
+										</div>
+									</div>
+								</div>
+							</div>
+							{% endif %}
+					</div>
+					<div>
+				</div>
+			</div>
+		</div>
+	</form>
+	</section>
+		<!-- MAIN -->
+
+	<!-- CONTENT -->
+	{% if success_message %}
+            <div class="popup d-flex justify-content-center">
+                <div class="success-message">{{ success_message }}</div>
+            </div>
+        {% endif %}
+	<script>
+		const popup = document.querySelector('.popup');
+        if (popup) {
+            popup.classList.add('show');
+            setTimeout(() => {
+                popup.classList.remove('show');
+            }, 3000);
+        }
+		let subMenu = document.getElementById("subMenu");
+		
+		function toggleMenu(){
+			subMenu.classList.toggle("open-menu");
+		}
+	</script>
+	
+
+	<script src="script.js"></script>
+</body>
+</html>

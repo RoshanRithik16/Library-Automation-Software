@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../static/searchmember.css">
+
+
+</head>
+<body>
+ <style>
+        /* Remove default text color for anchor tags */
+        a {
+            color: inherit;
+            text-decoration: none; /* Optionally remove underline */
+        }
+
+        /* Additional states can also be customized if needed */
+        a:visited {
+            color: inherit;
+        }
+
+        a:hover {
+            color: inherit;
+        }
+
+        a:active {
+            color: inherit;
+        }
+	</style>
+<!-- SIDEBAR -->
+	<section id="sidebar" style="font-family: var(--poppins); ">
+		<img src="../static/ritlogo.png" height="80px" width="190px" class="Logoimg" >
+		<ul class="side-menu top">
+			<li >
+				<a href="/sublibrarianDashboard">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li >
+				<a href="/subinventory">
+					<i class='bx bxs-package' ></i>
+					<span class="text">Inventory</span>
+				</a>
+			</li>
+
+
+			<li>
+				<a href="/subnoduechecker">
+					<i class='bx bxs-user-check'></i>
+					<span class="text">No Due Checker</span>
+				</a>
+			</li>
+			<li>
+				<a href="/subbookacquisition">
+					<i class='bx bxs-book type="sloid" ' ></i>
+					<span class="text">Book Acquisition</span>
+				</a>
+			</li>
+			<li class="active" >
+				<a href="/subbooksearch">
+					<i class='bx bx-search-alt-2'></i>
+					<span class="text">Search</span>
+				</a>
+			</li>
+		</ul>
+
+	</section>
+	<!--SIDEBAR-->
+
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+<!-- NAVBAR -->
+		<nav>
+			<h1 style="color:rgb(6, 126, 212);font-size:22px; font-weight:bold; font-family:poppins;padding-top: 10px;">Library Management System</h1>
+			<div class="right-corner">
+		    <img src="../static/user.jpg" class="user-pic"  onclick="toggleMenu()" >
+			<div class="sub-menu-wrap" id="subMenu">
+				<div class="sub-menu">
+					<a href="/forgot_password" class="sub-menu-link">
+                        <p>Change Password</p>
+					</a>
+					<a href="/logout" class="sub-menu-link" style="color: crimson;">
+						<p>Logout</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		</nav>
+<!--NAVBAR-->
+
+		<!-- MAIN -->
+		<main >
+			<div class="form-box">
+				<div>
+					<div class="tophead_navbar_container">
+
+						<div class="Inventory">
+							<a href="/subbooksearch">
+								<h1 style="font-size:18px;">Search Book</h1>
+							</a>
+						</div>
+						<div class="Inventoryclone">
+							<a href="/subsearchmember">
+								<h1 style="font-size:18px;">Search Member</h1>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="Addbookform_container" style="margin-bottom: 25px;">
+				<form action="/submsearch" method="post" class="form">
+					<div class="form1form2_and_AddBook_SubmitButton_container">
+						<div class="form1_and_form2">
+							<div class="form1">
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="user_id" style="font-size: 17px; ">Register No</label>
+									</div>
+									<div>
+										<input  type="text" name="user_id" id="user_id"  class="AddBook_Details"><br>
+									</div>
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="dept" style="font-size: 17px; ">Department</label>
+									</div>
+									<div>
+										<input type="text" name="dept" id="dept" class="AddBook_Details"><br>
+									</div>
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="phone_no" style="font-size: 17px; ">Contact</label>
+									</div>
+									<div>
+										<input type="numeric" name="phone_no" id="phone_no" inputmode="numeric" pattern="[0-9]*" class="AddBook_Details"><br>
+									</div>
+								</div>
+							</div>
+							<div class="form2">
+								<div style="padding: 3px;">
+									<div>
+										<label  class="textplace" for="name" style="font-size: 17px; ">Name</label>
+									</div>
+									<div>
+										<input type="text" name="name" id="name" class="AddBook_Details"><br>
+									</div>
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="designation" style="font-size: 17px; ">Designation</label>
+									</div>
+									<div>
+										<input type="text" name="designation" id="designation" class="AddBook_Details"><br>
+									</div>
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="year" style="font-size: 17px; ">Year</label>
+									</div>
+									<div>
+										<input type="number" name="year" id="year" inputmode="numeric" pattern="[0-9]*" class="AddBook_Details"><br>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="AddBook_container" style="margin-top:20px;">
+							<button type="Submit"class="AddBook_submit_button">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+	    <div class="tabledata_container">
+	    <table style="background-color: white;justify-content: center;display: flex;flex-direction: row;">
+			<colgroup>
+				<col style="width: 30%;">
+				<col style="width: 50%;">
+				<col style="width: 25%;">
+				<col style="width: 25%;">
+				<col style="width: 25%;">
+				<col style="width: 25%;">
+				<col style="width: 30%;">
+				<col style="width: 50%;">
+			</colgroup>
+			<thead>
+				<tr class="active-row">
+					<th>Register No</th>
+					<th>Department</th>
+					<th>Name</th>
+					<th>Contact</th>
+					<th>Designation</th>
+					<th>Year</th>
+					<th>Mail</th>
+					<th>Date Of Birth</th>
+				</tr>
+				{% for i in places %}
+  				<tr>
+    				<td>{{ i.REGISTERNO }}</td>
+					<td>{{ i.DEPARTMENT }}</td>
+					<td>{{ i.NAME }}</td>
+					<td>{{ i.PHONE }}</td>
+					<td>{{ i.DESIGNATION }}</td>
+					<td>{{ i.YEAR}}</td>
+					<td>{{ i.MAIL }}</td>
+					<td>{{ i.DOB }}</td>
+  				</tr>
+  				{% endfor %}
+			</thead>
+		</table>
+		</div>
+
+
+
+	</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+
+	{% if success_message %}
+            <div class="popup d-flex justify-content-center">
+                <div class="success-message">{{ success_message }}</div>
+            </div>
+        {% endif %}
+	<script src="static/scriptbook.js"></script>
+	<script>
+		const popup = document.querySelector('.popup');
+		  if (popup) {
+			  popup.classList.add('show');
+			  setTimeout(() => {
+				  popup.classList.remove('show');
+			  }, 3000);
+		  }
+		  var btn = document.getElementById('btn')
+window.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        if (window.location.href.includes("book.html")) {
+            btn.style.left = '0px';
+        } else if (window.location.href.includes("searchmember.html")) {
+            btn.style.left = '200px';
+        }
+    }, 200);
+});
+function leftClick() {
+	btn.style.left = '0px'
+    window.location.href="book.html"
+}
+
+function rightClick() {
+	btn.style.left = '200px'
+    window.location.href="searchmember.html"
+
+}
+		let subMenu = document.getElementById("subMenu");
+
+		function toggleMenu(){
+			subMenu.classList.toggle("open-menu");
+		}
+	  </script>
+</body>
+</html>

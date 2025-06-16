@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../static/inventory_remove_add.css">
+
+
+</head>
+<body>
+ <style>
+        /* Remove default text color for anchor tags */
+        a {
+            color: inherit;
+            text-decoration: none; /* Optionally remove underline */
+        }
+
+        /* Additional states can also be customized if needed */
+        a:visited {
+            color: inherit;
+        }
+
+        a:hover {
+            color: inherit;
+        }
+
+        a:active {
+            color: inherit;
+        }
+	</style>
+
+
+<!-- SIDEBAR -->
+	<section id="sidebar" style="font-family: var(--poppins); ">
+		<img src="../static/ritlogo.png" class="Logoimg" >
+		<ul class="side-menu top">
+			<li >
+				<a href='/librarianDashboard'>
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="/inventory">
+					<i class='bx bxs-package' ></i>
+					<span class="text">Inventory</span>
+				</a>
+			</li>
+			<li>
+				<a href="/student">
+					<i class='bx bxs-user type="sloid"' ></i>
+					<span class="text">Add Members</span>
+				</a>
+			</li>
+
+
+			<li>
+				<a href="/noduechecker">
+					<i class='bx bxs-user-check'></i>
+					<span class="text">No Due Checker</span>
+				</a>
+			</li>
+			<li>
+				<a href="/bookacquisition">
+					<i class='bx bxs-book type="sloid" ' ></i>
+					<span class="text">Book Acquisition</span>
+				</a>
+			</li>
+			<li>
+				<a href="/finemanager">
+					<i class='bx bx-money'></i>
+					<span class="text">Fine Manager</span>
+				</a>
+			</li>
+			<li>
+				<a href="/report">
+					<i class='bx bxs-report type="sloid"' ></i>
+					<span class="text">Report</span>
+				</a>
+			</li>
+			<li>
+				<a href="/booksearch">
+					<i class='bx bx-search-alt-2'></i>
+					<span class="text">Search</span>
+				</a>
+			</li>
+		</ul>
+
+	</section>
+	<!--SIDEBAR-->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+
+			<h1 style="color:rgb(6, 126, 212);font-size:22px; font-weight:bold; font-family:poppins;padding-top: 10px;">Library Management System</h1>			<div class="right-corner">
+		    <img src="../static/user.jpg" class="user-pic"  onclick="toggleMenu()" >
+			<div class="sub-menu-wrap" id="subMenu">
+				<div class="sub-menu">
+					<a href="/forgot_password" class="sub-menu-link">
+                        <p>Change Password</p>
+					</a>
+					<a href="/logout" class="sub-menu-link" style="color: crimson;">
+						<p>Logout</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		</nav>
+		<!-- NAVBAR -->
+
+
+		<!-- MAIN -->
+		<main >
+			<div >
+				<div>
+					<h1 style="font-weight: normal;padding-top: 30px;padding-left: 10px;">Add</h1>
+				</div>
+				<div class="tophead_navbar_container">
+
+					<div class="Inventoryclone">
+						<a href="/abook">
+							<h1 style="font-size:21px;">Book</h1>
+						</a>
+					</div>
+					<div class="Inventory">
+						<a href="/athesis">
+							<h1 style="font-size:21px;">Thesis</h1>
+						</a>
+					</div>
+					<div class="Inventoryclone">
+						<a href="/ajournals">
+							<h1 style="font-size:21px;">Journals</h1>
+						</a>
+					</div>
+					<div class="Inventoryclone">
+						<a href="/acds">
+							<h1 style="font-size:21px;">CDs</h1>
+						</a>
+					</div>
+					<div class="Inventoryclone">
+						<a href="/aprojects">
+							<h1 style="font-size:21px;">Projects</h1>
+						</a>
+					</div>
+					<div class="Inventoryclone">
+						<a href="/aeresource">
+							<h1 style="font-size:21px;">E-Resource</h1>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="Addbookform_container">
+				<form action="/addthesis" method="post" class="form">
+					<div class="form1form2_and_AddBook_SubmitButton_container">
+						<div class="form1_and_form2">
+							<div class="form1">
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="acc_no" style="font-size: 17px;font-weight: 600; ">Access No	</label>
+									</div>
+									<div>
+										<input  type="text" required name="acc_no" id="acc_no"  class="AddBook_Details"><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="title" style="font-size: 17px;font-weight: 600; ">Title</label>
+									</div>
+									<div>
+										<input type="text" required name="title" id="title" class="AddBook_Details"><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="author" style="font-size: 17px; font-weight: 600;">Author</label>
+									</div>
+									<div>
+										<input type="text" name="author" id="author"  class="AddBook_Details"><br>
+									</div>	
+								</div>
+							
+								
+								
+							</div>
+							<div class="form2">
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="page_no" style="font-size: 17px;font-weight: 600; ">Page No</label>
+									</div>
+									<div>
+										<input type="text" name="page_no" id="page_no" class="AddBook_Details"><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="department" style="font-size: 17px;font-weight: 600; ">Department</label>
+									</div>
+									<div>
+										<input type="text" name="department" id="department"  class="AddBook_Details"><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="year_of_submission" style="font-size: 17px;font-weight: 600;">Year of Submission</label>
+									</div>
+									<div>
+										<input type="number" name="year_of_submission" id="year_of_submission"  class="AddBook_Details"><br>
+									</div>	
+								</div>
+								
+							
+							</div>
+						</div>
+						<div class="AddBook_container">				
+							<button type="Submit"class="AddBook_submit_button">Submit</button>
+						</div>
+						</div>
+				</form>
+				<div class="AddBook_container" >
+					<button type = "Submit" class="AddBook_submit_button1" onclick="document.getElementById('csvFileInput').click();">Import  by CSV</button>
+					<form id="csvUploadForm" action="/import_thesis_csv" method="post" enctype="multipart/form-data" style="display: none;">
+						<input type="file" id="csvFileInput" name="csv_file" accept=".csv" onchange="document.getElementById('csvUploadForm').submit();" style="display: none;">
+					</form>
+				</div>
+					
+			</div>
+			
+		
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->	
+	
+	{% if success_message %}
+	<div class="popup d-flex justify-content-center">
+		<div class="success-message">{{ success_message }}</div>
+	</div>
+{% endif %}
+<script>
+const popup = document.querySelector('.popup');
+if (popup) {
+	popup.classList.add('show');
+	setTimeout(() => {
+		popup.classList.remove('show');
+	}, 3000);
+}
+		let subMenu = document.getElementById("subMenu");
+		
+		function toggleMenu(){
+			subMenu.classList.toggle("open-menu");
+		}
+		
+	</script>
+	<script src="./scriptinventory.js"></script>
+</body>
+</html>

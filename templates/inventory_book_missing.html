@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../static/inventory_missing.css">
+
+	
+</head>
+<body>
+
+	<!-- SIDEBAR -->
+	<section id="sidebar" style="font-family: var(--poppins); ">
+		<img src="../static/ritlogo.png" class="Logoimg" >
+		<ul class="side-menu top">
+			<li >
+				<a href='/librarianDashboard'>
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="/inventory">
+					<i class='bx bxs-package' ></i>
+					<span class="text">Inventory</span>
+				</a>
+			</li>
+			<li>
+				<a href="/student">
+					<i class='bx bxs-user type="sloid"' ></i>
+					<span class="text">Add Members</span>
+				</a>
+			</li>
+
+
+			<li>
+				<a href="/noduechecker">
+					<i class='bx bxs-user-check'></i>
+					<span class="text">No Due Checker</span>
+				</a>
+			</li>
+			<li>
+				<a href="/bookacquisition">
+					<i class='bx bxs-book type="sloid" ' ></i>
+					<span class="text">Book Acquisition</span>
+				</a>
+			</li>
+			<li>
+				<a href="/finemanager">
+					<i class='bx bx-money'></i>
+					<span class="text">Fine Manager</span>
+				</a>
+			</li>
+			<li>
+				<a href="/report">
+					<i class='bx bxs-report type="sloid"' ></i>
+					<span class="text">Report</span>
+				</a>
+			</li>
+			<li>
+				<a href="/booksearch">
+					<i class='bx bx-search-alt-2'></i>
+					<span class="text">Search</span>
+				</a>
+			</li>
+		</ul>
+
+	</section>
+	<!--SIDEBAR-->
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+
+			
+			<h1 style="color:rgb(6, 126, 212);font-size:22px; font-weight:bold; font-family:poppins;padding-top: 10px;">Library Management System</h1>
+						<div class="right-corner">
+						<img src="../static/user.jpg" class="user-pic"  onclick="toggleMenu()" >
+						<div class="sub-menu-wrap" id="subMenu">
+							<div class="sub-menu">
+								<a href="/forgot_password" class="sub-menu-link">
+									<p>Change Password</p>
+								</a>
+								<a href="/logout" class="sub-menu-link" style="color: crimson;">
+									<p>Logout</p>
+								</a>
+							</div>
+						</div>
+					</div>
+					</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main >
+			<div >
+				<div>
+					<h1 style="font-weight: normal;padding-top: 30px;padding-left: 10px;">Missing Items</h1>
+				</div>
+				
+			</div>
+	<form action="/search_missing" method="post" class="form">
+		
+			<div>
+				<div style="padding: 3px;">
+					<div>
+						<label class="textplace" for="acc_no" style="font-size: 17px; ">Access Number</label>
+					</div>
+					<div style="display: flex; flex-direction: row; margin-bottom: 25px;">
+						<input type="number" name="acc_no" id="acc_no" inputmode="numeric" value="{{ acc_no | default('') }}" class="AddBook_Details" required>
+					    <button type="Submit"class="AddBook_submit_button" style="width: 50%; margin-left: 30px;" name="submit" value="submit">Submit</button>
+					</div>	
+				</div>
+			</div>
+		
+	{% if found %}
+			<div class="Addbookform_container">
+			    <div class="form1form2_and_AddBook_SubmitButton_container">
+						<div class="form1_and_form2">
+							<div class="form1">
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="acc_no" style="font-size: 17px; ">Title:</label>
+									</div>
+									<div>
+										<label type="text" name="title" id="acc_no" class="AddBook_Details">{{ found.TITLE }}</label><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="acc_no" style="font-size: 17px; ">Author:</label>
+									</div>
+									<div>
+										<label type="text" name="author" id="acc_no"  class="AddBook_Details">{{ found.AUTHOR }}</label><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace"  for="acc_no" style="font-size: 17px;">Year:</label>
+									</div>
+									<div>
+										<label type="text" name="year" id="acc_no"   class="AddBook_Details">{{ found.YEAR }}</label><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="acc_no" style="font-size: 17px; ">Page No:</label>
+									</div>
+									<div>
+										<label type="text" name="page_no" id="acc_no"  class="AddBook_Details">{{ found.PAGENO}}</label><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="acc_no" style="font-size: 17px;">ISBN:</label>
+									</div>
+									<div>
+										<label type="text" name="isbn" id="acc_no"  class="AddBook_Details">{{found['ISBN ']}}</label><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<select name="reason">
+										
+										<option value="available">Available</option>
+										<option value="missing">Missing</option>
+										<option value="Binding">Binding</option>
+										<option value="Others">Others</option>
+										
+									</select>
+								</div>
+							</div>
+							<div class="form2">
+								<div style="padding: 3px;">
+									<div>
+										<label  class="textplace" for="acc_no" style="font-size: 17px; ">Call No:</label>
+									</div>
+									<div>
+										<label type="text" name="call_no" id="acc_no"  class="AddBook_Details">{{found.CALLNO}}</label><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="acc_no" style="font-size: 17px; ">Author 2:</label>
+									</div>
+									<div>
+										<label type="text" name="author_2" id="acc_no"  class="AddBook_Details">{{found.AUTHOR2}}</label><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="acc_no" style="font-size: 17px;">Publisher:</label>
+									</div>
+									<div>
+										<label type="text" name="publisher" id="acc_no" class="AddBook_Details">{{found.PUBLISHER}}</label><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="acc_no" style="font-size: 17px; ">Price:</label>
+									</div>
+									<div>
+										<label type="text" name="price" id="acc_no" class="AddBook_Details">{{ found.PRICE }}</label><br>
+									</div>	
+								</div>
+								<div style="padding: 3px;">
+									<div>
+										<label class="textplace" for="acc_no" style="font-size: 17px;">Location:</label>
+									</div>
+									<div>
+										<label type="text" name="location" id="acc_no"  class="AddBook_Details">{{ found.Location }}</label><br>
+									</div>	
+								</div>
+								<div >
+									<button type="Submit"class="AddBook_submit_button" style="margin-right: 325px;" name="submit" value="missing">Submit</button>
+								</form> 
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>	
+		{% endif %}
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->	
+	
+{% if success_message %}
+            <div class="popup d-flex justify-content-center">
+                <div class="success-message">{{ success_message }}</div>
+            </div>
+        {% endif %}
+	<script>
+		const popup = document.querySelector('.popup');
+        if (popup) {
+            popup.classList.add('show');
+            setTimeout(() => {
+                popup.classList.remove('show');
+            }, 3000);
+        }
+		let subMenu = document.getElementById("subMenu");
+		
+		function toggleMenu(){
+			subMenu.classList.toggle("open-menu");
+		}
+		
+	</script>
+	<script src="./static/scriptinventory.js"></script>
+</body>
+</html>

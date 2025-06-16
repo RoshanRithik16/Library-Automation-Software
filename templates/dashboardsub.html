@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../static/dashboard.css">
+
+	
+</head>
+<body style="overflow: hidden;">
+
+
+
+<!-- SIDEBAR -->
+	<section id="sidebar" style="font-family: var(--poppins); ">
+		<img src="../static/ritlogo.png" height="80px" width="190px" class="Logoimg" >
+		<ul class="side-menu top">
+			<li class="active">
+				<a href="/sublibrarianDashboard">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="/subinventory">
+					<i class='bx bxs-package' ></i>
+					<span class="text">Inventory</span>
+				</a>
+			</li>
+			<li>
+				<a href="/subnoduechecker">
+					<i class='bx bxs-user-check'></i>
+					<span class="text">No Due Checker</span>
+				</a>
+			</li>
+			<li>
+				<a href="/subbookacquisition">
+					<i class='bx bxs-book type="sloid" ' ></i>
+					<span class="text">Book Acquisition</span>
+				</a>
+			</li>		
+			<li>
+				<a href="/subbooksearch">
+					<i class='bx bx-search-alt-2'></i>
+					<span class="text">Search</span>
+				</a>
+			</li>
+		</ul>
+
+	</section>
+<!--SIDEBAR-->
+
+
+
+
+	<!-- CONTENT -->
+	<section id="content" style="overflow:hidden">
+<!-- NAVBAR -->
+		<nav>
+
+			<h1 style="color:rgb(6, 126, 212);font-size:22px; font-weight:bold; font-family:poppins;padding-top: 10px;">Library Management System</h1>
+			<div class="right-corner">
+		    <img src="../static/user.jpg" class="user-pic"  onclick="toggleMenu()" >
+			<div class="sub-menu-wrap" id="subMenu">
+				<div class="sub-menu">
+					<a href="/forgot_password" class="sub-menu-link">
+                        <p>Change Password</p>
+					</a>
+					<a href="/logout" class="sub-menu-link" style="color: crimson;">
+						<p>Logout</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		</nav>
+<!--NAVBAR-->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1 style="font-weight: normal;padding-top: 30px;padding-left: 10px;">Dashboard</h1>
+
+				</div>
+
+			</div>
+		<div class="All_container">
+			<div class="Books_memebers_container">
+				<ul class="box-info">
+					<li>
+						<i class='bx bxs-' >
+							<img src="../static/Books.png" style="height: 40px;">
+						</i>
+						<span class="text">
+							<p id="book_count" style="font-weight: bold; font-size: 20px;">{{book_count}}</p>
+							<p>Currently available books</p>
+						</span>
+					</li>
+					<li>
+						<i class='bx bxs-' style="background-color:#b5efb9">
+							<img src="../static/issuedbook.png" style=" height: 40px" >
+						</i>
+						<span class="text">
+							<p id="issued_count" style="font-weight: bold; font-size: 20px;">{{issued_count}}</p>
+							<p>Total Books Issued</p>
+						</span>
+					</li>
+					<li>
+						<i class='bx bxs-group' ></i>
+						<span class="text">
+							<p id="members_count" style="font-weight: bold; font-size: 20px;">{{members_count}}</p>
+							<p>Members</p>
+						</span>
+					</li>
+				</ul>
+			</div>
+
+
+			</div>
+		</div>
+		</main>
+		<div>
+			<div class="dues_footfall_and_book_container">
+				<div class="recent_dues">
+					<div class="recenthead_notifybutton_tabledata">
+						<div class="recenthead_notifybutton_container">
+							<div>
+								<h3 style="padding: 5px; font-size:34px;font-weight: normal;">Upcoming <span style="color: orangered; padding:5px;">Dues</span> </h3>
+							</div>
+							<div class="view_button" onclick="window.location.href='/subview_dues'">
+								<h1 style="font-size: 16px; padding:6px;">View</h1>
+								<img src="../static/eyeview.png" style="height: 20px; margin:8px;">
+							</div>
+						</div>
+
+						<div class="tabledata_container">
+								<table class="tabledata_container">
+									<colgroup>
+										<col style="width: 16%;">
+										<col style="width: 25%;">
+										<col style="width: 13%;">
+										<col style="width: 16%;">
+										<col style="width: 12%;">
+									</colgroup>
+									<thead>
+										<tr>
+											<th>Register No</th>
+											<th>Name</th>
+											<th>Access No.</th>
+											<th>Due date</th>
+											<th>Due In</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for due in dues_data[:10] %}
+											{% if due.DIFFERENCE in ['2 days', '1 day', 'Today'] %}
+												<tr>
+													<td data-label="Register No">{{ due.REGISTERNO }}</td>
+													<td data-label="Name">{{ due.NAME }}</td>
+													<td data-label="Book Id">{{ due.ACC }}</td>
+													<td data-label="Due date">{{ due['DUEDATE'] }}</td>
+													<td data-label="Due In">{{ due.DIFFERENCE }}</td>
+												</tr>
+											{% endif %}
+										{% endfor %}
+									</tbody>
+								</table>
+						</div>
+						
+
+
+					</div>
+				</div>
+				<div class="footfall_and_bookmanager_container">
+					<div>
+						<div class="footfall_container">
+							<div class="foothead_and_img">
+								<h2 style="padding-left: 20px;font-weight: normal;padding-top: 10px;">Footfall</h2>
+								<img src="../static/Foot.png" style="height:43px;padding-top:10px;">
+							</div>
+							<div class="footfall">
+								<div class="content1">
+									<p id="footfall_day" >{{footfall_day}}</p>
+									<p>Today</p>
+								</div>
+								<div class="content2">
+									<p id="footfall_month">{{footfall_month}}</p>
+									<p>This Month</p>
+								</div>
+								<div class="content3">
+									<p id="footfall_year">{{footfall_year}}</p>
+									<p>This Year</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="bookmanager_container">
+						<div class="bookmanager_and_logo" onclick="window.location.href='/subbookmanager'">
+							<div class="book_manager_head">
+								<h1 style="font-size:24px;font-weight: normal;">Book Manager</h1>
+								<a href="#" style="color: rgb(255, 255, 255);">Issue/Return/Renewal</a>
+							</div>
+							<div>
+								<img src="../static/Return_Book.png" class="Return_Book-logo">
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	<script>
+		
+		let subMenu = document.getElementById("subMenu");
+
+		function toggleMenu(){
+			subMenu.classList.toggle("open-menu");
+		}
+
+		let dataLoaded = false;
+
+		function fetchBookData() {
+			fetch('/api/get_bookcount')
+				.then(response => response.json())
+				.then(data => {
+					document.getElementById('book_count').innerText = data.book_count;
+					if (!dataLoaded) {
+						startRefresh();
+						dataLoaded = true;
+					}
+				})
+				.catch(error => console.error('Error fetching bookcount data:', error));
+		}
+
+		function fetchIssuedData() {
+			fetch('/api/get_issuedcount')
+				.then(response => response.json())
+				.then(data => {
+					document.getElementById('issued_count').innerText = data.issued_count;
+					if (!dataLoaded) {
+						startRefresh();
+						dataLoaded = true;
+					}
+				})
+				.catch(error => console.error('Error fetching bookcount data:', error));
+		}
+
+		function fetchFootfallData() {
+			fetch('/api/get_footfall')
+				.then(response => response.json())
+				.then(data => {
+					document.getElementById('footfall_day').innerText = data.footfall_day;
+					document.getElementById('footfall_month').innerText = data.footfall_month;
+					document.getElementById('footfall_year').innerText = data.footfall_year;
+					if (!dataLoaded) {
+						startRefresh();
+						dataLoaded = true;
+					}
+				})
+				.catch(error => console.error('Error fetching footfall data:', error));
+		}
+
+		// Initial fetch to populate the data as soon as the page loads
+		document.addEventListener('DOMContentLoaded', () => {
+			fetchBookData();
+			fetchIssuedData()
+			fetchFootfallData();
+		});
+
+		function startRefresh() {
+			// Fetch book count data every 1 seconds
+			setInterval(fetchBookData, 1000);
+			setInterval(fetchIssuedData, 1000);
+			// Fetch footfall data every 1 seconds
+			setInterval(fetchFootfallData, 1000);
+		}
+	</script>
+
+
+	
+</body>
+</html>

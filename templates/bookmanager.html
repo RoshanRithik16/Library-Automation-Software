@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../static/bookmanager.css">
+</head>
+<body style="overflow: hidden;">
+	<!-- SIDEBAR -->
+    <section id="sidebar" style="font-family: var(--poppins); ">
+		<img src="../static/ritlogo.png" height="80px" width="190px" class="Logoimg">
+		<ul class="side-menu top">
+			<li class="active">
+				<a href="/librarianDashboard">
+					<i class='bx bxs-dashboard'></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="/inventory">
+					<i class='bx bxs-package'></i>
+					<span class="text">Inventory</span>
+				</a>
+			</li>
+			<li>
+				<a href="/student">
+					<i class='bx bxs-user type="solid"'></i>
+					<span class="text">Add Members</span>
+				</a>
+			</li>
+			<li>
+				<a href="/noduechecker">
+					<i class='bx bxs-user-check'></i>
+					<span class="text">No Due Checker</span>
+				</a>
+			</li>
+			<li>
+				<a href="/bookacquisition">
+					<i class='bx bxs-book type="solid"'></i>
+					<span class="text">Book Acquisition</span>
+				</a>
+			</li>
+			<li>
+				<a href="/finemanager">
+					<i class='bx bx-money'></i>
+					<span class="text">Fine Manager</span>
+				</a>
+			</li>
+			<li>
+				<a href="/report">
+					<i class='bx bxs-report type="solid"'></i>
+					<span class="text">Report</span>
+				</a>
+			</li>
+			<li >
+				<a href="/booksearch">
+					<i class='bx bx-search-alt-2'></i>
+					<span class="text">Search</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+	<!-- CONTENT -->
+    <section id="content" style="overflow:hidden">
+		<!-- NAVBAR -->
+		<nav>
+			<h1 style="color:rgb(6, 126, 212);font-size:22px; font-weight:bold; font-family:poppins;padding-top: 10px;">Library Management System</h1>			<div class="right-corner">
+		    	<img src="../static/user.jpg" class="user-pic"  onclick="toggleMenu()">
+				<div class="sub-menu-wrap" id="subMenu">
+					<div class="sub-menu">
+						<a href="/forgot_password" class="sub-menu-link">
+							<p>Change Password</p>
+						</a>
+						<a href="/logout" class="sub-menu-link" style="color: crimson;">
+							<p>Logout</p>
+						</a>
+					</div>
+				</div>
+			</div> <!-- Closing right-corner div -->
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main style="margin-top: -24px;">
+			<div class="head-title">
+				<div class="left">
+					<h1 style="font-weight: normal;padding-top: 30px;padding-left: 10px;">Book Manager</h1>    				
+    				<div style="margin-top: -70px;">
+        				<form action="/submit" method="post" style="background-color: #EEEEEE;border-radius: 10px;height:100%">
+            				<div class="form-input">
+                				<ul class="box" style="background-color: white; height: 73px; border-radius: 10px;">
+                    				<input type="text" class="input_dabba" name="user_id" value="{{ user_id | default('') }}" placeholder="Register Number">
+                    				<input type="number" class="input_dabba" name="acc_no" value="{{ acc_no | default('') }}" placeholder="Accession Number">
+                    				<button type="submit" name="action" value="submit" class="submit-btn1">Submit</button>
+                				</ul>
+            				</div>
+
+                            <ul class="box">
+                				<button type="submit" name="action" value="issue" class="return" style="background-color:#00C0EF;">
+                    				<div class="book_manager">
+                        				<h1 style="font-size:30px;color:white;margin-top:10px;margin-left:70px;font-weight: normal;">Issue</h1>
+                    				</div>
+                    				<div>
+                        				<img src="../static/issue.png" class="Return_Book-logo">
+                    				</div>
+                				</button>
+                				<button type="submit" name="action" value="return" class="return" style="background-color:#00A65A;">
+                    				<div class="book_manager">
+                        				<h1 style="font-size:30px;color:white;margin-top:10px;margin-left:70px;font-weight: normal;">Return</h1>
+                    				</div>
+                    				<div>
+                        				<img src="../static/Return_Book.png" class="Return_Book-logo">
+                    				</div>
+                				</button>
+                				<button type="submit" name="action" value="renew" class="return" style="background-color:#FBA627;">
+                    				<div class="book_manager">
+                        				<h1 style="font-size:30px;color:white;margin-top:10px;margin-left:70px;font-weight: normal;">Renew</h1>
+                    				</div>
+                    				<div>
+                        				<img src="../static/Return_Book.png" class="Return_Book-logo">
+                    				</div>
+                				</button>
+            				</ul>
+
+            				<div class="table-data">
+                				<div class="order" style="height:190px;background-color: white;">
+                    				<h3 style="margin-top: -80px;margin-left: -75px;font-weight: 500;font-size: 24px;">User Details</h3>
+                    				<table style="margin-left: -75px;">
+                        				<thead>
+                            				<tr>
+                                				<th>
+                                    				<label for="name" style="font-weight: 700;">Name</label>
+                                    				<label type="text" id="name" name="name"  style="border:#EEEEEE; display: flex;font-weight:500;">{{ name | default('') }}</label	>
+                                				</th>
+                                				<th>
+                                    				<label for="desig" style="font-weight: 700;">Desig</label>
+                                    				<label type="text" id="desig" name="desig" style="border:#EEEEEE;display: flex;font-weight:500;">{{ desig | default('') }}</label	>
+                                				</th>
+                                				<th>
+                                    				<label for="department" style="font-weight: 700;">Department</label>
+                                    				<label type="text" id="department" name="department"style="border:#EEEEEE;display: flex;font-weight:500;">{{ department | default('') }}</label	>
+                                				</th>
+                            				</tr>
+                        				</thead>
+                        				<thead>
+                            				<tr>
+                                				<th>
+                                    				<label for="year_stu" style="font-weight: 700;">Year</label>
+                                    				<label type="text" id="year_stu" name="year_stu"  style="border:#EEEEEE;display: flex;font-weight:500;">{{ year_stu | default('') }}</label	>
+                                				</th>
+                                				<th>
+													<label for="phone" style="font-weight: 700;">Contact</label>
+                                    				<label type="number" id="phone" name="phone"  style="border:#EEEEEE;display: flex;font-weight:500;">{{ phone | default('') }}</label	>
+                                				</th>
+                                				<th>
+													<label for="fineamount" style="font-weight: 700;">Fine Amount</label>
+                                    				<label type="number" id="fineamount" name="fineamount"  style="border:#EEEEEE;display: flex;font-weight:500;">{{ fineamount | default('') }}</label	>
+                                				</th>
+                            				</tr>
+                        				</thead>
+                    				</table>
+                				</div>
+                				<div class="order" style="background-color: #EEEEEE;">
+                    				<div class="container" style="margin-top:-95px;margin-left: -70px; height:300px">
+                        				<h3 style="margin-top:-245px;font-weight: 500;font-size: 24px;">Book Details</h3>
+                        				<table style="margin-top:40px; margin-left: -290px;">
+                            				<thead>
+                                				<tr>
+                                    				<th>
+                                        				<label for="title" style="font-weight: 700;">Title</label>
+                                        				<label type="text" id="title" name="title"style="border:#EEEEEE; display: flex;font-weight:500;">{{ title | default('') }}</label	>
+                                    				</th>
+                                    				<th>
+                                        				<label for="author" style="font-weight: 700;">Author</label>
+                                        				<label type="text" id="author" name="author" style="border:#EEEEEE; display: flex;font-weight:500;">{{ author | default('') }}</label	>
+                                    				</th>
+                                				</tr>
+                            				</thead>
+                            				<thead>
+                                				<tr>
+                                    				<th>
+                                        				<label for="callno" style="font-weight: 700;">Call No</label>
+                                        				<label type="text" id="callno" name="callno"  style="border:#EEEEEE; display: flex;font-weight:500;">{{ callno | default('') }}</label	>
+                                    				</th>
+                                    				<th>
+                                        				<div>
+															<label for="edition" style="font-weight: 700;">EDITION</label>
+															<label type="text" id="edition" name="edition" style="border:#EEEEEE; display: flex;font-weight:500;">{{ edition | default('') }}</label>
+															<span></span>
+														</div>
+                                    				</th>
+                                				</tr>
+                            				</thead>
+                            				<thead>
+                                				<tr>
+                                    				<th>
+                                        				<div for="publisher" style="font-weight: 700;">Publisher</div>
+                                        				<label type="text" id="publisher" name="publisher"  style="border:#EEEEEE; display: flex;font-weight:500;">{{ publisher | default('') }}</label>
+                                    				</th>
+                                    				<th>
+                                        				<div> 
+														<label for="location" style="font-weight: 700;"> Location</label>
+                                        				<label type="text" id="location" name="location" style="border:#EEEEEE; display: flex;font-weight:500;">{{ location | default('') }}</label>
+														<span></span>
+														
+													</div>
+													</th>
+
+                                				</tr>
+                            				</thead>
+                            				<thead>
+                                				<tr>
+                                    				<th>
+                                        				<label for="year" style="font-weight: 700;">Year</label>
+                                        				<label type="text" id="year" name="year"  style="border:#EEEEEE; display: flex;font-weight:500;">{{ year | default('') }}</label>
+                                    				</th>
+                                				</tr>
+                            				</thead>
+                        				</table>
+                    				</div>
+                				</div>
+            				</div>
+        				</form>
+						<div class="table-data" style="margin-top: -240px;">
+							<div class="order3" style="height:300px; background-color: white; margin-top: -40px">
+								<h5 style="margin-left: -75px; margin-top: -60px;">Issued Books Details</h5>
+								<div class="tabledata_container">
+								<table style="margin-left: -75px; border-color: lightgray; overflow-y: scroll;">
+									<colgroup>
+										<col style="width: 25%;">
+										<col style="width: 25%;">
+										<col style="width: 70%;">
+										<col style="width: 30%;">
+										<col style="width: 30%;">
+									</colgroup>
+						
+									<thead>
+									<tr class="active-row">
+										<th>S. No</th>
+										<th>ACC. NO.</th>
+										<th>Title</th>
+										<th>Issue Date</th>
+										<th>Due Date</th>
+									</tr>
+									{% for book in issued_details %}
+									<tr>
+										<td>{{ loop.index }}</td>
+										<td>{{ book['ACC'] }}</td>
+										<td>{{ book['TITLE'] }}</td>
+										<td>{{ book['ISSUEDATE'] }}</td>
+										<td>{{ book['DUEDATE'] }}</td>
+									</tr>
+									
+									
+									<tr>
+										<td colspan="5">{{ error }}</td>
+									</tr>
+									{% endfor %}
+									<!-- Success message if any -->
+									{% if message %}
+									<tr>
+										<td colspan="5">{{ message }}</td>
+									</tr>
+									{% endif %}
+								</thead>
+								</table>
+							</div>
+							</div>
+                            <div class="order" style="height:250px; background-color:#EEEEEE; margin-top: 55px;">
+								<div class="container" style="margin-left: -70px;background-image: linear-gradient(to right, #095695 , #03253F);margin-top: -95px; height: 200px;">
+									<div class="items_column" style="margin-top: -40px;">
+										<div class="head_image_container">
+											<h2 style="margin-top: 45px;color: white;font-size: 40px;font-weight: 500;">Quick Return</h2>
+											<div style="height: 45px; width: 45">
+												<img src="../static/Return_Book.png" class="Return_Book-logo" style="height: 50px; width: 50px; margin-top: 45px;">
+											</div>
+										</div>
+										<form action="{{ url_for('quick_return_route') }}" method="post">
+											<div class="head_image_container">
+												<div class="form-input">
+													<input type="number" class="input-dabba" placeholder=" Accession Number" name="acc_no" style=" margin-top: 25px; height: 50px; width: 300px	; border-radius: 10px; border-color: grey;">
+													<button type="submit" class="submit-btn2" style="height: 50px; margin-top: 20px; color: white; width: 100px;"><p style="font-size : 15px;">Submit</p></button>
+												</div>  
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+{% if success_message %}
+            <div class="popup d-flex justify-content-center">
+                <div class="success-message">{{ success_message }}</div>
+            </div>
+        {% endif %}
+	<script>
+		const popup = document.querySelector('.popup');
+        if (popup) {
+            popup.classList.add('show');
+            setTimeout(() => {
+                popup.classList.remove('show');
+            }, 3000);
+        }
+		let subMenu = document.getElementById("subMenu");
+		function toggleMenu(){
+			subMenu.classList.toggle("open-menu");
+		}
+	</script>
+	<script src="script.js"></script>
+</body>
+</html>

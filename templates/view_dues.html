@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- My CSS -->
+    <link rel="stylesheet" href="../static/dashboard.css">
+
+    <style>
+        .table-wrapper {
+            max-height: 540px; /* Adjust the height as needed */
+            overflow-y: auto;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            margin-top: 20px;
+            padding: 0; /* Remove any padding */
+        }
+        .tabledata_container table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            margin: 0; /* Remove any margin */
+            padding: 0; /* Remove any padding */
+        }
+        
+        .tabledata_container th,
+        .tabledata_container td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        .tabledata_container th {
+            background-color: #f2f2f2;
+        }
+        
+        .tabledata_container td {
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body style="overflow: hidden;">
+
+<!-- SIDEBAR -->
+<section id="sidebar" style="font-family: var(--poppins); ">
+    <img src="../static/ritlogo.png" height="80px" width="190px" class="Logoimg" >
+    <ul class="side-menu top">
+        <li class="active">
+            <a href="/librarianDashboard">
+                <i class='bx bxs-dashboard' ></i>
+                <span class="text">Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="/inventory">
+                <i class='bx bxs-package' ></i>
+                <span class="text">Inventory</span>
+            </a>
+        </li>
+        <li>
+            <a href="/student">
+                <i class='bx bxs-user type="sloid"' ></i>
+                <span class="text">Add Members</span>
+            </a>
+        </li>
+
+
+        <li>
+            <a href="/noduechecker">
+                <i class='bx bxs-user-check'></i>
+                <span class="text">No Due Checker</span>
+            </a>
+        </li>
+        <li>
+            <a href="/bookacquisition">
+                <i class='bx bxs-book type="sloid" ' ></i>
+                <span class="text">Book Acquisition</span>
+            </a>
+        </li>
+        <li>
+            <a href="/finemanager">
+                <i class='bx bx-money'></i>
+                <span class="text">Fine Manager</span>
+            </a>
+        </li>
+        <li>
+            <a href="/report">
+                <i class='bx bxs-report type="sloid"' ></i>
+                <span class="text">Report</span>
+            </a>
+        </li>
+        <li>
+            <a href="/booksearch">
+                <i class='bx bx-search-alt-2'></i>
+                <span class="text">Search</span>
+            </a>
+        </li>
+    </ul>
+
+</section>
+<!-- SIDEBAR -->
+
+<!-- CONTENT -->
+<section id="content" style="overflow:hidden">
+    <!-- NAVBAR -->
+    <nav>
+        <h1 style="color:rgb(6, 126, 212);font-size:22px; font-weight:bold; font-family:poppins;padding-top: 10px;">Library Management System</h1>
+        <div class="right-corner">
+            <img src="../static/user.jpg" class="user-pic" onclick="toggleMenu()">
+            <div class="sub-menu-wrap" id="subMenu">
+                <div class="sub-menu">
+                    <a href="/forgot_password" class="sub-menu-link">
+                        <p>Change Password</p>
+                    </a>
+                    <a href="/logout" class="sub-menu-link" style="color: crimson;">
+                        <p>Logout</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- NAVBAR -->
+
+    <!-- MAIN -->
+    <main>
+        <div class="head-title">
+            <div class="left">
+                <h3 style="padding: 5px; font-size:34px;font-weight: normal;padding-top:20px;">Upcoming Dues </h3>
+
+            </div>
+
+        </div>
+        <div class="table-wrapper tabledata_container">
+            <table>
+                <colgroup>
+                    <col style="width: 16%;">
+                    <col style="width: 25%;">
+                    <col style="width: 13%;">
+                    <col style="width: 16%;">
+                    <col style="width: 12%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>Register No</th>
+                        <th>Name</th>
+                        <th>Access No.</th>
+                        <th>Due date</th>
+                        <th>Due In</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for due in dues_data %}
+                        {% if due.DIFFERENCE in ['2 days', '1 day', 'Today'] %}
+                            <tr>
+                                <td data-label="Register No">{{ due.REGISTERNO }}</td>
+                                <td data-label="Name">{{ due.NAME }}</td>
+                                <td data-label="Book Id">{{ due.ACC }}</td>
+                                <td data-label="Due date">{{ due['DUEDATE'] }}</td>
+                                <td data-label="Due In">{{ due.DIFFERENCE }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <!-- MAIN -->
+</section>
+<!-- CONTENT -->
+</body>
+</html>
