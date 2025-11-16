@@ -23,7 +23,7 @@ except Exception as e:
     # Log the error or print it for debugging purposes
     
 
-password = "beub kbft vpdx tswm"
+password = ""
 
 dues_data = []
 
@@ -50,7 +50,7 @@ except Exception as e:
     
 try:
     
-    client = MongoClient("mongodb+srv://Monica:libraryautomation@cluster0.feu2lx8.mongodb.net/")
+    client = MongoClient("mongodb+srv:")
     db = client['Book']
     db1 = client.userdatabase
     users_collection = db1.users
@@ -469,7 +469,7 @@ def forgot_password():
         return render_template("index.html",
                                success_message="An error occurred while rendering the forgot password page")
 
-client = MongoClient("mongodb+srv://Monica:libraryautomation@cluster0.feu2lx8.mongodb.net/")
+client = MongoClient("mongodb+srv:")
 db = client['Book']
 @app.route('/view_dues')
 @login_required
@@ -499,7 +499,7 @@ def view_page():
         
         return render_template("dashboard.html", success_message="An error occurred while rendering the view dues page", dues_data=dues_data, members_count=members_count)
 
-client = MongoClient("mongodb+srv://Monica:libraryautomation@cluster0.feu2lx8.mongodb.net/")
+client = MongoClient("mongodb+srv:")
 db = client['Book']
 @app.route('/subview_dues')
 @login_required
@@ -530,7 +530,7 @@ def subview_page():
         return render_template("dashboardsub.html",
                                success_message="An error occurred while rendering the forgot password page", dues_data=dues_data, members_count=members_count)
 
-client = MongoClient("mongodb+srv://Monica:libraryautomation@cluster0.feu2lx8.mongodb.net/")
+client = MongoClient("mongodb+srv:")
 db = client['Book']
 @app.route('/librarianDashboard')
 @login_required
@@ -568,7 +568,7 @@ def dashboard():
        
         return render_template("index.html", success_message="An error occurred while rendering the dashboard")
 
-client = MongoClient("mongodb+srv://Monica:libraryautomation@cluster0.feu2lx8.mongodb.net/")
+client = MongoClient("mongodb+srv:")
 db = client['Book']
 @app.route('/sublibrarianDashboard')
 @login_required
@@ -842,7 +842,7 @@ def log_book():
 @login_required
 def import_book_csv():
     try:
-        mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv://Monica:libraryautomation@cluster0.feu2lx8.mongodb.net/')
+        mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv:')
         client = MongoClient(mongo_uri)
         db = client['Book']  # Database name
         collection = db['BookData']  # Collection name
@@ -910,7 +910,7 @@ def import_book_csv():
 @login_required
 def import_cds_csv():
     try:
-        mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv://Monica:libraryautomation@cluster0.feu2lx8.mongodb.net/')
+        mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv:')
         client = MongoClient(mongo_uri)
         db = client['Book']  # Database name
         collection = db['CDs']
@@ -1000,7 +1000,7 @@ def import_cds_csv():
 @login_required
 def import_thesis_csv():
     try:
-        mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv://Monica:libraryautomation@cluster0.feu2lx8.mongodb.net/')
+        mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv:')
         client = MongoClient(mongo_uri)
         db = client['Book']  # Database name
         collection = db['Thesis']
@@ -1089,7 +1089,7 @@ def import_thesis_csv():
 @login_required
 def import_journals_csv():
     try:
-        mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv://Monica:libraryautomation@cluster0.feu2lx8.mongodb.net/')
+        mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv:')
         client = MongoClient(mongo_uri)
         db = client['Book']  # Database name
         collection = db['Journals']
@@ -1184,7 +1184,7 @@ def import_journals_csv():
 @login_required
 def import_projects_csv():
     try:
-        mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv://Monica:libraryautomation@cluster0.feu2lx8.mongodb.net/')
+        mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv:')
         client = MongoClient(mongo_uri)
         db = client['Book']  # Database name
         collection = db['Projects']
@@ -1360,7 +1360,7 @@ def import_eresource_csv():
 @login_required
 def import_csv():
     try:
-        mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv://Monica:libraryautomation@cluster0.feu2lx8.mongodb.net/')
+        mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv:')
         client = MongoClient(mongo_uri)
         db = client['Book']  # Database name
         collection1 = db['Members']
@@ -3893,3 +3893,4 @@ def fine_input():
 if __name__ == '__main__':
     threading.Thread(target=open_browser).start()
     app.run(debug=False)
+
